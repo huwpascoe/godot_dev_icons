@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://cedieonsmqvh6"]
+
+[sub_resource type="Environment" id="Environment_hldju"]
+
+[sub_resource type="GDScript" id="GDScript_t36ad"]
+script/source = "extends Node3D
+
+static func _dev_icon() -> Dictionary:
+	return {
+		# defaults
+	}
+"
+
+[sub_resource type="BoxMesh" id="BoxMesh_3b0i2"]
+
+[sub_resource type="GDScript" id="GDScript_lnsdy"]
+script/source = "extends Node3D
+
+static func _dev_icon() -> Dictionary:
+	return {
+		&\"path\": \"res://addons/dev_icons/icon.png\",
+		&\"size\": 1.8
+	}
+"
+
+[sub_resource type="GDScript" id="GDScript_n4coi"]
+script/source = "extends Node3D
+
+static func _dev_icon() -> Dictionary:
+	return {
+		&\"color\": Color.AQUA
+	}
+"
+
+[sub_resource type="GDScript" id="GDScript_st6t4"]
+script/source = "extends Node3D
+
+static func _dev_icon() -> Dictionary:
+	return {
+		&\"path\": \"res://addons/dev_icons/icon.png\",
+		&\"world_scale\": true
+	}
+"
+
+[node name="Example" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hldju")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.94975, 4.94975)
+
+[node name="Default" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 2)
+script = SubResource("GDScript_t36ad")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Default"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_3b0i2")
+
+[node name="Size" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, -2)
+script = SubResource("GDScript_lnsdy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Size"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_3b0i2")
+
+[node name="Color" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -2)
+script = SubResource("GDScript_n4coi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Color"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_3b0i2")
+
+[node name="WorldScale" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 2)
+script = SubResource("GDScript_st6t4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldScale"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_3b0i2")
