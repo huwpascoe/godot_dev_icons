@@ -39,10 +39,10 @@ func _create_gizmo(for_node_3d: Node3D) -> EditorNode3DGizmo:
 	gizmo.size = params.get(&"size", 1.0)
 	gizmo.color = params.get(&"color", Color.WHITE)
 
-	var world_scale := params.get(&"world_scale", false)
+	var world_scale: bool = params.get(&"world_scale", false)
 	gizmo.size *= WORLD_SIZE_MULTIPLIER if world_scale else FIXED_SIZE_MULTIPLIER
 
-	var path := params.get(&"path", DEFAULT_ICON)
+	var path: String = params.get(&"path", DEFAULT_ICON)
 	var key := "%s_%s" % [path, world_scale]
 	if not _material_cache.has(key):
 		gizmo.material = get_material("world" if world_scale else "fixed").duplicate()
